@@ -12,15 +12,31 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 export class AppComponent {
   public appPages = [
     {
-      title: 'Home',
+      title: 'Startsidan',
       url: '/home',
       icon: 'home'
     },
     {
-      title: 'List',
+      title: 'Min profil',
+      url: '/home',
+      icon: 'person'
+    },
+    {
+      title: 'Lista',
       url: '/list',
+      icon: 'chatboxes'
+    },
+    {
+      title: 'Skapa nytt',
+      url: '/create',
       icon: 'list'
+    },
+    {
+      title: 'Mina evenemang',
+      url: '/event-list',
+      icon: 'chatboxes'
     }
+    
   ];
 
   constructor(

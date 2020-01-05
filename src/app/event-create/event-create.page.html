@@ -1,0 +1,39 @@
+<!-- student-create.html -->
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Create Student</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Name</ion-label>
+    <ion-input [(ngModel)]="data.EventName" placeholder="Enter Name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Datum</ion-label>
+    <ion-input [(ngModel)]="data.Date" placeholder="Ex.. 2020-06-23"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Beskrivning av tillställning</ion-label>
+    <ion-input [(ngModel)]="data.Description" placeholder="Evenemangsbeskrivning"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Plats</ion-label>
+    <ion-input [(ngModel)]="data.Location" placeholder="Ex.. Västkusten - Smögen"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Kategori</ion-label>
+    <ion-input [(ngModel)]="data.Category" placeholder="Kategori"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-button (click)="submitForm()">Add
+    </ion-button>
+  </ion-item>
+
+</ion-content> 

@@ -1,0 +1,90 @@
+<ion-header>
+  
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>    <ion-title>Mina evenemang</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openCart()">
+        <ion-icon slot="icon-only" name="cart"></ion-icon> <!--Byt icon-->
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+ 
+<!-- <ion-content padding>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of studentsData">
+        <td>{{ item.ID }}</td>
+        <td>{{ item.EventName }}</td>
+        <td>{{ item.Date }}</td>
+        <td>{{ item.Description }}</td>
+       
+        <td style="display: flex">
+          <ion-button color="warning" size="small" routerLink='/edit/{{item.ID}}'>
+            <ion-icon name="create"></ion-icon>
+          </ion-button>
+          <ion-button color="danger" size="small" (click)="delete(item)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ion-button [routerLink]="['/create']">
+    Add Student
+  </ion-button>
+</ion-content>-->
+
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Ionic Shopping
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openCart()">
+        <ion-icon slot="icon-only" name="cart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>  -->
+ 
+<ion-content>
+  <div *ngFor="let item of studentsData" class="category-block">
+ 
+    <ion-row no-padding class="category-banner">
+      <ion-col text-left button tappable (click)="item.expanded = !item.expanded" align-self-center>
+        {{ item.EventName }}
+      </ion-col>
+    </ion-row>
+ 
+    <ion-slides [options]="sliderConfig">
+      <ion-slide *ngFor="let item of studentsData">
+        <div *ngIf="item.expanded">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>
+                {{ item.EventName }} 
+              </ion-card-title>
+              <ion-card-content>
+                <img src="https://via.placeholder.com/300x300">
+                <!-- <ion-button expand="full" (click)="addToCart(product)">Add to Cart</ion-button> -->
+              </ion-card-content>
+            </ion-card-header>
+          </ion-card>
+        </div>
+      </ion-slide>
+    </ion-slides>
+ 
+  </div>
+</ion-content>
