@@ -1,0 +1,33 @@
+<ng-container *ngIf="data">
+
+<ion-header>
+  <ion-toolbar  color="tertiary">
+    <ion-buttons icon="arrow-back" slot="start">
+      <ion-back-button ></ion-back-button>
+    </ion-buttons>
+      <ion-label padding>
+        <h1 style="text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 10px ;"> Tilldela poäng  </h1>
+      </ion-label>
+
+  </ion-toolbar>
+</ion-header>
+
+<ng-container *ngIf="team">
+
+<ion-content padding class="background">
+  <h1>Tilldela poäng till lagen</h1>
+
+  <ion-item *ngFor="let item of PointsList">
+    <ion-label>{{item.Team.TeamName}}: </ion-label>
+    <ion-input [(ngModel)]="item.TeamPoints" type="number"  ></ion-input>
+
+  </ion-item>
+  <ion-button (click)="updatePoints()" color="success" size="small">
+    Uppdatera info
+  </ion-button>
+  <ion-button routerLink='/game-list/{{gameID}}' color="danger" size="small">
+    Gå tillbaks
+  </ion-button>
+</ion-content>
+</ng-container>
+</ng-container>

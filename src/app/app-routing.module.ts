@@ -2,56 +2,18 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'home', //redirect to 'login' för att ha det som startsida
-    pathMatch: 'full'
-  },
-  { path: '', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
-
-  {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
-  },
-  {
-    path: 'list',
-    loadChildren: () => import('./pages/list/list.module').then(m => m.ListPageModule)
-  },
+  { path: '', loadChildren: './home/home.module#HomePageModule' },
+  { path: 'implicit/callback', loadChildren: './auth/implicit/auth-callback/auth-callback.module#AuthCallbackPageModule' },
+  { path: 'implicit/logout', loadChildren: './auth/implicit/end-session/end-session.module#EndSessionPageModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   {
     path: 'tabs',
-    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
-  },
-  {
-    path: 'createevent',
-    loadChildren: () => import('./pages/createevent/createevent.module').then( m => m.CreateeventPageModule)
-  },
-  {
-    path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
-  },
-  {
-    path: 'datepicker',
-    loadChildren: () => import('./pages/datepicker/datepicker.module').then( m => m.DatepickerPageModule)
-  },
-  {
-    path: 'addevent',
-    loadChildren: () => import('./pages/addevent/addevent.module').then( m => m.AddeventPageModule)
-  },
-  {
-    path: 'myevents',
-    loadChildren: () => import('./pages/myevents/myevents.module').then( m => m.MyeventsPageModule)
-  },
-  {
-    path: 'jsonusers',
-    loadChildren: () => import('./pages/jsonusers/jsonusers.module').then( m => m.JsonusersPageModule)
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
   },
   
   {
-    path: 'create',
-    loadChildren: () => import('./event-create/event-create.module').then( m => m.EventCreatePageModule)
-  },
-  {
-    path: 'event-edit',
+    //:id läggs till efter event-edit eftersom vi bara vill gå till den sidan med ett ID
+    path: 'event-edit/:id',
     loadChildren: () => import('./event-edit/event-edit.module').then( m => m.EventEditPageModule)
   },
   {
@@ -59,12 +21,59 @@ const routes: Routes = [
     loadChildren: () => import('./event-list/event-list.module').then( m => m.EventListPageModule)
   },
   {
-    path: 'event-detail',
+    path: 'event-detail/:id',
     loadChildren: () => import('./event-detail/event-detail.module').then( m => m.EventDetailPageModule)
   },
- 
-];
+  {
+    path: 'scoreboard/:eventID',
+    loadChildren: () => import('./scoreboard/scoreboard.module').then( m => m.ScoreboardPageModule)
+  },
+  {
+    path: 'create',
+    loadChildren: () => import('./event-create/event-create.module').then( m => m.EventCreatePageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'game-create/:id',
+    loadChildren: () => import('./game-create/game-create.module').then( m => m.GameCreatePageModule)
+  },
+  {
+    path: 'game-list/:id',
+    loadChildren: () => import('./game-list/game-list.module').then( m => m.GameListPageModule)
+  },
+  {
+    path: 'event-teams/:id',
+    loadChildren: () => import('./event-teams/event-teams.module').then( m => m.EventTeamsPageModule)
+  },
+  {
+    path: 'event-team-details',
+    loadChildren: () => import('./event-team-details/event-team-details.module').then( m => m.EventTeamDetailsPageModule)
+  },
+  {
+    path: 'event-team-create/:id',
+    loadChildren: () => import('./event-team-create/event-team-create.module').then( m => m.EventTeamCreatePageModule)
+  },
+  {
+    path: 'game-setpoints/:id/:eventID',
+    loadChildren: () => import('./game-setpoints/game-setpoints.module').then( m => m.GameSetpointsPageModule)
+  },
+  {
+    path: 'game-scoreboard/:id',
+    loadChildren: () => import('./game-scoreboard/game-scoreboard.module').then( m => m.GameScoreboardPageModule)
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
+  },
+  {
+    path: 'profile-edit/:id',
+    loadChildren: () => import('./profile-edit/profile-edit.module').then( m => m.ProfileEditPageModule)
+  },
 
+];
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })

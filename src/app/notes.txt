@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Nytt evenemang</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="ion-padding">
+    <form [formGroup]="registrationForm" (ngSubmit)="submitForm()">
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Evenemangets namn</ion-label>
+          <ion-input autocapitalize inputmode="text" formControlName="EventName"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.EventName">
+          <ng-container *ngIf="EventName.hasError(error.type) && (EventName.dirty || EventName.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+
+        <ion-item>
+          <ion-label position="floating">Kort beskrivning</ion-label>
+          <ion-input autocapitalize inputmode="text" formControlName="Description"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.Description">
+          <ng-container *ngIf="Description.hasError(error.type) && (Description.dirty || Description.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+        <ion-item>
+          <ion-label position="floating">Kategori</ion-label>
+          <ion-input autocapitalize inputmode="text" formControlName="Category"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.Category">
+          <ng-container *ngIf="Category.hasError(error.type) && (Category.dirty || Category.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+        <ion-item>
+          <ion-label position="floating">Datum</ion-label>
+          <ion-input autocapitalize inputmode="text" formControlName="Date"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.Date">
+          <ng-container *ngIf="Date.hasError(error.type) && (Date.dirty || Date.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+        <ion-item>
+          <ion-label position="floating">Plats för evenemang</ion-label>
+          <ion-input autocapitalize inputmode="text" formControlName="Location"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.Location">
+          <ng-container *ngIf="Location.hasError(error.type) && (Location.dirty || Location.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+      
+      </ion-list>
+      
+      <ion-button [disabled]="!registrationForm.valid" type="submit" expand="block">Submit <ion-icon slot="end"
+          name="create">
+        </ion-icon>
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

@@ -4,34 +4,35 @@ import { TestBed, async } from '@angular/core/testing';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { RouterTestingModule } from '@angular/router/testing';
 
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { IonicStorageModule } from '@ionic/storage';
 
 describe('AppComponent', () => {
 
-  let statusBarSpy, splashScreenSpy, platformReadySpy, platformSpy;
+  let statusBarSpy, splashScreenSpy, platformReadySpy, platformIsSpy, platformSpy;
 
   beforeEach(async(() => {
     statusBarSpy = jasmine.createSpyObj('StatusBar', ['styleDefault']);
     splashScreenSpy = jasmine.createSpyObj('SplashScreen', ['hide']);
     platformReadySpy = Promise.resolve();
-    platformSpy = jasmine.createSpyObj('Platform', { ready: platformReadySpy });
+    platformIsSpy = Promise.resolve();
+    platformSpy = jasmine.createSpyObj('Platform', { ready: platformReadySpy, is: platformIsSpy });
 
     TestBed.configureTestingModule({
       declarations: [AppComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [HttpClientTestingModule,  IonicStorageModule.forRoot()],
       providers: [
         { provide: StatusBar, useValue: statusBarSpy },
         { provide: SplashScreen, useValue: splashScreenSpy },
-        { provide: Platform, useValue: platformSpy },
+        { provide: Platform, useValue: platformSpy }
       ],
-      imports: [ RouterTestingModule.withRoutes([])],
     }).compileComponents();
   }));
 
-  it('should create the app', async () => {
+  it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
@@ -40,8 +41,9 @@ describe('AppComponent', () => {
   it('should initialize the app', async () => {
     TestBed.createComponent(AppComponent);
     expect(platformSpy.ready).toHaveBeenCalled();
-    await platformReadySpy;
+    await platformReadySpy;expect(statusBarSpy.styleDefault).toHaveBeenCalled();
     expect(statusBarSpy.styleDefault).toHaveBeenCalled();
+
     expect(splashScreenSpy.hide).toHaveBeenCalled();
   });
 
@@ -64,5 +66,6 @@ describe('AppComponent', () => {
     expect(menuItems[0].getAttribute('ng-reflect-router-link')).toEqual('/home');
     expect(menuItems[1].getAttribute('ng-reflect-router-link')).toEqual('/list');
   });
+  // TODO: add more tests!
 
 });

@@ -1,90 +1,124 @@
-<ion-header>
+<ion-header >
   
   <ion-toolbar color="tertiary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>    <ion-title>Mina evenemang</ion-title>
-    <ion-buttons slot="end">
+    <!-- <ion-buttons slot="end">
       <ion-button (click)="openCart()">
-        <ion-icon slot="icon-only" name="cart"></ion-icon> <!--Byt icon-->
+        <ion-icon slot="icon-only" name="cart"></ion-icon> 
       </ion-button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-toolbar>
 </ion-header>
  
-<!-- <ion-content padding>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Name</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of studentsData">
-        <td>{{ item.ID }}</td>
-        <td>{{ item.EventName }}</td>
-        <td>{{ item.Date }}</td>
-        <td>{{ item.Description }}</td>
-       
-        <td style="display: flex">
-          <ion-button color="warning" size="small" routerLink='/edit/{{item.ID}}'>
-            <ion-icon name="create"></ion-icon>
-          </ion-button>
-          <ion-button color="danger" size="small" (click)="delete(item)">
-            <ion-icon name="trash"></ion-icon>
-          </ion-button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <ion-button [routerLink]="['/create']">
-    Add Student
-  </ion-button>
-</ion-content>-->
 
-<!-- <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Ionic Shopping
-    </ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="openCart()">
-        <ion-icon slot="icon-only" name="cart"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>  -->
+<ion-content *ngIf="authenticated" >
+  <h1 style="text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 10px ;"> Evenemang som deltagare  </h1>
+    <ion-row class="ion-justify-content-center" >
+  <ng-container *ngIf="contestantEvents">
+    <img style="text-align: center; height: 60px;" src="../../assets/Sad_Face_Emoji_large.png"/>
+
+  <h5 style="color: red;text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 10px ;"> Inga evenemang som deltagare kan hittas  </h5>
+  </ng-container>
+</ion-row>
+  <div *ngFor="let item of contestantEvents" class="category-block">
  
-<ion-content>
-  <div *ngFor="let item of studentsData" class="category-block">
- 
-    <ion-row no-padding class="category-banner">
-      <ion-col text-left button tappable (click)="item.expanded = !item.expanded" align-self-center>
-        {{ item.EventName }}
+    <ion-row  no-padding class="category-banner">
+      
+
+      <ion-col (click)="getEventGames(item.ID)" text-left button tappable (click)="item.expanded = !item.expanded" align-self-center>
+        {{ item.EventName }} 
       </ion-col>
+      <ion-button color="tertiary" size="small" routerLink='/event-detail/{{item.ID}}'>
+        <ion-icon name="create"></ion-icon>
+      </ion-button>
+      <ion-button color="warning" size="small" routerLink='/event-edit/{{item.ID}}'>
+        <ion-icon name="create"></ion-icon>
+      </ion-button>
+      <ion-button color="danger" size="small" (click)="delete(item)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
     </ion-row>
  
     <ion-slides [options]="sliderConfig">
-      <ion-slide *ngFor="let item of studentsData">
+      <ion-slide *ngFor="let game of gamesList">
         <div *ngIf="item.expanded">
-          <ion-card>
+          <!-- <ion-button color="tertiary" size="small"  routerLink='/event-detail/{{item.ID}}'>
+            Evenemangssida
+            <ion-icon name="arrow-round-forward"></ion-icon>
+          </ion-button> -->
+          <ion-card style="max-height: 300px;">
             <ion-card-header>
               <ion-card-title>
-                {{ item.EventName }} 
+                {{ game.Name }} 
               </ion-card-title>
               <ion-card-content>
-                <img src="https://via.placeholder.com/300x300">
-                <!-- <ion-button expand="full" (click)="addToCart(product)">Add to Cart</ion-button> -->
+                <img src="{{game.BildURL}}"/>
+                <!-- <ion-button expand="full" color="tertiary" size="small"  routerLink='/event-detail/{{item.ID}}'>Sätt poäng</ion-button> -->
               </ion-card-content>
             </ion-card-header>
           </ion-card>
         </div>
       </ion-slide>
     </ion-slides>
+  </div>
+
+  <ng-container *ngIf="adminEvents">
+
+    <h1 style="text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-top: 10px ;"> Mina skapade evenemang  </h1>
+    <div *ngFor="let event of adminEvents" class="category-block">
+ 
+    <ion-row no-padding class="category-banner">
+      <ion-col (click)="getEventGames(event.ID)" text-left button tappable (click)="event.expanded = !event.expanded" align-self-center>
+        {{ event.EventName }} 
+      </ion-col>
+      <ion-button color="tertiary" size="small" routerLink='/event-detail/{{event.ID}}'>
+        <ion-icon name="arrow-forward"></ion-icon>
+      </ion-button>
+      <ion-button color="warning" size="small" routerLink='/event-edit/{{event.ID}}'>
+        <ion-icon name="create"></ion-icon>
+      </ion-button>
+      <ion-button color="danger" size="small" (click)="delete(item)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-row>
+
+    <ion-slides [options]="sliderConfig">
+      <ion-slide *ngFor="let game of gamesList">
+        <div *ngIf="event.expanded">
+          <!-- <ion-button color="tertiary" size="small"  routerLink='/event-detail/{{event.ID}}'>
+            Evenemangssida
+            <ion-icon name="arrow-round-forward"></ion-icon>
+          </ion-button> -->
+          <ion-card style="max-height: 300px;">
+            <ion-card-header>
+              <ion-card-title>
+                {{ game.Name }} 
+              </ion-card-title>
+              <ion-card-content>
+                <img  src="{{game.BildURL}}"/>
+                <!-- <ion-button expand="full" color="tertiary" size="small"  routerLink='/event-detail/{{event.ID}}'>Sätt poäng</ion-button> -->
+              </ion-card-content>
+            </ion-card-header>
+          </ion-card>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  
  
   </div>
+  </ng-container>
+  <ion-row class="ion-justify-content-center" >
+    <br>
+    <br>
+  <ion-button  [routerLink]="['/create']">
+    Skapa nytt evenemang
+  </ion-button>
+</ion-row >
+</ion-content>
+<ion-content *ngIf="!authenticated">
+  <h2>Du är ej inloggad. Logga in för att få åtkomst till din information</h2>
+
+<ion-button margin-top (click)="signIn()" *ngIf="!authenticated">Login</ion-button>
 </ion-content>

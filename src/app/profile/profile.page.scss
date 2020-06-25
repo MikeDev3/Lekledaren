@@ -1,0 +1,56 @@
+ion-content {
+	 --background: url(../../assets/GreenBackground.png) no-repeat top center/cover fixed, #fff;
+	 position: relative;
+	 height: 100%;
+	 width: 100%;
+}
+ ion-toolbar {
+	 --background: transparent;
+}
+ .card {
+	 margin: 0 auto;
+}
+ .card .header {
+	 height: 200px;
+}
+ .card .header .avatar {
+	 width: 160px;
+	 height: 160px;
+	 position: relative;
+	 margin: 0 auto;
+}
+ .card .header .avatar img {
+	 display: block;
+	 border-radius: 50%;
+	 position: absolute;
+	 bottom: calc(-1*(80px + 4px));
+	 border: 8px solid #9dc912;
+	 background-color: #fff;
+	 z-index: 1;
+}
+ .card-body {
+	 background-color: #fff;
+	 padding: 30px;
+	 height: calc(90vh - (200px + 56px));
+	 overflow: hidden;
+	 opacity: 0.9;
+	 -webkit-box-shadow: -1px -1px 19px 9px rgba(0, 0, 0, 0.32);
+	 -moz-box-shadow: -1px -1px 19px 9px rgba(0, 0, 0, 0.32);
+	 box-shadow: -1px -1px 19px 9px rgba(0, 0, 0, 0.32);
+	 border-radius: 10%;
+}
+ .card-body .user-meta {
+	 padding-top: 40px;
+}
+ .card-body .user-meta .profilename {
+	 font-size: 24px;
+	 font-weight: 600;
+	 color: #303940;
+}
+ .card-body .user-meta .country {
+	 font-size: 90%;
+	 color: #949ea6;
+	 text-transform: uppercase;
+	 margin: 0 auto;
+}
+ 

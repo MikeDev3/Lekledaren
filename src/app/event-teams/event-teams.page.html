@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar  color="tertiary">
+    <ion-buttons icon="arrow-back" slot="start">
+      <ion-back-button ></ion-back-button>
+    </ion-buttons>
+      <ion-label padding>
+        <h2 style="text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 10px ;"> Evenemangets deltagande lag  </h2>
+      </ion-label>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  
+  <ion-fab routerLink='/event-team-create/{{eventID}}'  vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+   
+  </ion-fab>  
+  <ion-card *ngFor="let item of teamsList" style="background-color: whitesmoke; margin-top: 20%;">
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="../../assets/grass.jpg">
+      </ion-avatar>
+      <ion-label>
+        <h2><strong>{{item.TeamName}} </strong></h2> 
+             
+      </ion-label>
+    </ion-item>
+  
+    <img style="height: 200px;" src="{{item.BildURL}}" alt="ion">
+    <!-- <ion-card-header>
+      <ion-card-title>{{item.TeamName}} </ion-card-title>
+    </ion-card-header> -->
+    <ion-card-content style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+     <strong> Poäng: </strong>{{item.TeamScore}}
+    </ion-card-content>
+  
+    <ion-footer>
+      <ion-row>
+        <ion-col  center text-center>
+          <ion-button color="tertiary" size="small" (click)="delete(item)">
+            <ion-icon name="settings"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <!-- <ion-col center text-center>
+          <button class="button2">
+            <ion-icon name="podium"></ion-icon>
+            <div>Resultat</div>
+          </button>
+        </ion-col> -->
+        <ion-col center text-center>
+          <ion-button color="danger" size="small" (click)="delete(item)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-footer>
+  </ion-card>
+</ion-content>

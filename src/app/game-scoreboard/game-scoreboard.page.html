@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar  color="tertiary">
+    <ion-buttons icon="arrow-back" slot="start">
+      <ion-back-button ></ion-back-button>
+    </ion-buttons>
+      <ion-label padding>
+        <h1 style="text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 10px ;"> Rapportera resultat  </h1>
+      </ion-label>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <h1 style="color: white;text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 10px ;">Visar resultat för: {{Game.Name}}  </h1>
+
+  <div class="ion-padding">
+    <ion-card style="background-color: whitesmoke; height: 400px;">
+
+      <ng-container *ngIf="!(PointsResponse?.length > 0)">    
+      <h5 style="color: red;text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 10px ;"> Här var det tomt.   </h5>
+      <p style="color: red;text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> Inga poäng verkar ha blivit tilldelade än.   </p>
+
+      </ng-container>
+      <ion-card-header>
+        Resultat
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #barCanvas></canvas>
+      </ion-card-content>
+    </ion-card> 
+  </div>
+</ion-content> 

@@ -1,0 +1,20 @@
+ion-content.background{
+    --background: url(../../assets/purple.jpg) 0 0/100% 100% no-repeat;
+  }
+
+  .item {
+    width: 300px;
+    padding-bottom: 50px;
+}
+.top {
+    margin-bottom: -8px;
+    text-align: center;
+}
+.borders {
+    border-bottom: black solid 4px;
+    border-left: black solid 4px;
+    border-right: black solid 4px;
+    height: 12px;
+    border-bottom-right-radius:8px;
+    border-bottom-left-radius:8px;
+}

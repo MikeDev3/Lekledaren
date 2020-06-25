@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar  color="tertiary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+      <ion-label padding>
+      <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;  ">
+        Lägg till lek        
+      </h1> 
+      </ion-label>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <form [formGroup]="registrationForm" (ngSubmit)="submitForm()">
+      <ion-list>
+
+        <ion-item>
+          <ion-label position="floating">Namnge lek</ion-label>
+          <ion-input  [(ngModel)]="data.Name" autocapitalize inputmode="text" formControlName="Name"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.Name">
+          <ng-container *ngIf="Name.hasError(error.type) && (Name.dirty || Name.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+
+        <ion-item>
+          <ion-label>Ange typ av lek</ion-label>
+          <ion-select multiple="false" (ionChange)="selectHandler($event)" cancelText="Avbryt" okText="Välj!">
+            <ion-select-option value="Individuell">Individuell lek</ion-select-option>
+            <ion-select-option value="Parlek">Parlek</ion-select-option>
+            <ion-select-option value="Laglekar">Laglekar</ion-select-option>
+    
+          </ion-select>
+          <!-- <ion-label position="floating">Kategori</ion-label>
+          <ion-input  [(ngModel)]="data.Category" autocapitalize inputmode="text" formControlName="Category"></ion-input> -->
+        </ion-item>
+
+
+        <!-- <ion-item>
+          <ion-label position="floating"></ion-label>
+          <ion-input  [(ngModel)]="data.TypeOfGame" autocapitalize inputmode="text" formControlName="TypeOfGame"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.TypeOfGame">
+          <ng-container *ngIf="TypeOfGame.hasError(error.type) && (TypeOfGame.dirty || TypeOfGame.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div> -->
+
+        <ion-item>
+          <ion-label position="floating">Regler</ion-label>
+          <ion-input  [(ngModel)]="data.Description" autocapitalize type="text" formControlName="Description"></ion-input>
+        </ion-item>    
+        <div *ngFor="let error of errorMessages.Description">
+          <ng-container *ngIf="Description.hasError(error.type) && (Description.dirty || Description.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+
+        <ion-item>
+          <ion-label position="floating">Maxpoäng</ion-label>
+          <ion-input  [(ngModel)]="data.Points" autocapitalize inputmode="text" formControlName="Points"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.Points">
+          <ng-container *ngIf="Points.hasError(error.type) && (Points.dirty || Points.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+      
+      </ion-list>
+      <br>
+      <ion-button [disabled]="!registrationForm.valid" type="submit" expand="block">Skapa Lek <ion-icon slot="end"
+          name="create">
+        </ion-icon>
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

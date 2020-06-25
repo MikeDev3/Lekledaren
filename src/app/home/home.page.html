@@ -1,0 +1,144 @@
+<ion-content *ngIf="authenticated">
+<ion-header>
+  <ion-toolbar  color="tertiary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+      <ion-label padding>
+
+      <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 35px; ">
+        Huvudmeny
+        
+        <img class="toolbarImg" src="/assets/clipart.png" alt=""/>
+      </h1> 
+    
+
+
+      </ion-label>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="background">
+  
+  
+  <ion-card *ngIf="authenticated">
+    <ion-card-header>
+      <ion-button >Get User Details</ion-button>
+      <ion-button (click)="signOut()">Sign Out</ion-button>
+    </ion-card-header>
+
+    <ion-card *ngIf="userInfo">
+      <ion-card-header>
+        User Info
+      </ion-card-header>
+      <ion-card-content>
+        {{userInfo | json}}
+        
+      </ion-card-content>
+    </ion-card>
+    <!-- <ion-card *ngIf="action">
+      <ion-card-header>
+        Action Data
+      </ion-card-header>
+      <ion-card-content>
+        {{action | json}}
+      </ion-card-content>
+    </ion-card> -->
+  </ion-card>
+  <ion-card style="background-color: white; opacity: 0.95; border-radius: 10%;" class="welcome-card">
+    <img  src="/assets/clipart.png" alt=""/>
+
+    <!-- <img src="/assets/shapes.svg" alt=""/> -->
+    <ion-card-header>
+      <ion-card-title>Välkommen till lekledaren</ion-card-title>
+    </ion-card-header>
+    <ion-button margin-top (click)="signIn()" *ngIf="!authenticated">Login</ion-button>
+
+    <ion-card-content>
+      <p>
+        Planerar du att hålla i ett quiz på personalfesten? Eller är du kanske den ständige lekledaren på midsommarlekarna? Då har du hittat rätt.
+        Som registrerad användare kan du digitalisera dina kommande evenemang.
+       
+      </p>
+    </ion-card-content>
+  </ion-card>
+  <ion-row>
+    <ion-col col-4>
+      <ion-card [routerLink]="[ '/event-list']" class="CardOne">
+        <ion-card-header>
+          <ion-card-subtitle>Mina evenemang</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content style="position: absolute; bottom: 0px; right: 0px;">
+          
+          <img slot="end" src="/assets/icon/calender.png" style="height: 25px; width: 25px;" />
+        </ion-card-content>
+        <!-- <ion-card-content style="position: fixed; bottom: 0px; right: 0px;">
+          
+          <img slot="end" src="/assets/calender.png" style="height: 40px; width: 40px;" />
+        </ion-card-content> --> <!-- Lite kul kod eftersom bilden blir som en actionbar-->
+      </ion-card>
+    </ion-col>
+    <ion-col col-4>
+      <ion-card  class="CardTwo">
+        <ion-card-header>
+          <ion-card-subtitle>Evenemang som deltagare</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content style="position: absolute; bottom: 0px; right: 0px;">
+          
+          <img slot="end" src="/assets/icon/jump.png" style="height: 25px; width: 25px;" />
+        </ion-card-content>
+      </ion-card>   
+     </ion-col>  
+  </ion-row>
+
+  <ion-row style="padding-top: 40px;">
+    <ion-col col-4>
+      <ion-button [routerLink]="[ '/profile']"  class="roundBtn1"></ion-button>
+     </ion-col>
+    <ion-col col-4>
+      <ion-button [routerLink]="[ '/create']" class="roundBtn2"></ion-button>
+    </ion-col>
+    <ion-col col-4>
+      <ion-button [routerLink]="[ '/about']" class="roundBtn3"></ion-button>
+    </ion-col>
+   
+  </ion-row>
+
+  <ion-row style="color: white; font-weight: 900; font-size: 20px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+    <ion-col col-4>
+      <ion-label style="padding-left: 20px;">Profil</ion-label>
+     </ion-col>
+    <ion-col col-4>
+      <ion-label style="padding-left: 25px;" >Nytt evenemang</ion-label>
+    </ion-col>
+    <ion-col col-4>
+      <ion-label style="padding-left: 20px;"> Om oss </ion-label>
+    </ion-col>
+   
+  </ion-row>
+
+  <img style="margin-bottom: 20%; border-radius: 10; opacity: 0.9;" src="/assets/gif.gif" /> <!--Image from https://i.pinimg.com/originals/b5/84/cf/b584cff4c5c0b9bbf3f6c1a76bbd126b.gif-->
+
+  <hr>
+</ion-content>
+</ion-content>
+<ion-content *ngIf="!authenticated">
+
+  <ion-header>
+    <ion-toolbar  color="tertiary">    
+        <ion-label padding> 
+        <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 35px; ">
+          Huvudmeny          
+        </h1> 
+        </ion-label>
+  
+    </ion-toolbar>
+    <h2>Du är ej inloggad. Logga in för att få åtkomst till din information</h2>
+  </ion-header>
+
+  <ion-button margin-top (click)="signIn()" *ngIf="!authenticated">Login</ion-button>
+
+
+</ion-content>

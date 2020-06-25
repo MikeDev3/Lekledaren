@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar  color="tertiary">
+    <ion-buttons icon="arrow-back" slot="start">
+      <ion-back-button ></ion-back-button>
+    </ion-buttons>
+      <ion-label padding>
+        <h1 style="text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 10px ;"> Scoreboard  </h1>
+      </ion-label>
+  </ion-toolbar>
+</ion-header>
+<!--https://ionicdon.com/integrating-dynamic-chart-and-graphs-from-database-to-ionic-app/-->
+<ion-content>
+  
+  
+  <div style=" background-color:#7e57ff;"  class="ion-padding">
+
+    <!--*ngFor="let item of PointsResponse"-->
+    <ion-card   style="height: 350px; background-color: azure">
+      <ion-card-header>
+        <h1 style="text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 10px ;"> Slutställning  </h1>
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #barCanvas></canvas>
+      </ion-card-content>
+    </ion-card> 
+
+    <h1 style="text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 5px ; text-decoration: underline; color:white"> Summering per lag  </h1>
+
+    <ion-card  style=" background-color: azure"   *ngFor="let item of GamePoints" >
+      <ion-card-header>
+        <h1 style="text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 2px ;"> Lag {{item.TeamName}}  </h1>
+        <ion-row class="ion-justify-content-center">
+
+        <img  style="padding: 10px; height: 100px; width: 100px;" src="/assets/pngwave.png" alt=""/>
+        </ion-row>
+
+      </ion-card-header>
+      <ion-card-content>
+        <h4 style=" font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 10px ;"> Slutställning: <strong style="color: red"> {{item.TeamScore}} Poäng </strong>  </h4>
+
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+</ion-content> 
+

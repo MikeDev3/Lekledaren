@@ -1,39 +1,82 @@
-<!-- student-create.html -->
 <ion-header>
-  <ion-toolbar color="tertiary">
+  <ion-toolbar  color="tertiary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Create Student</ion-title>
+      <ion-label padding>
+        <h2 style="text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 10px ;"> Skapa nytt evenemang  </h2>
+      </ion-label>
   </ion-toolbar>
 </ion-header>
+<ion-content *ngIf="authenticated">
 
-<ion-content padding>
-  <ion-item>
-    <ion-label>Name</ion-label>
-    <ion-input [(ngModel)]="data.EventName" placeholder="Enter Name"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Datum</ion-label>
-    <ion-input [(ngModel)]="data.Date" placeholder="Ex.. 2020-06-23"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Beskrivning av tillställning</ion-label>
-    <ion-input [(ngModel)]="data.Description" placeholder="Evenemangsbeskrivning"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Plats</ion-label>
-    <ion-input [(ngModel)]="data.Location" placeholder="Ex.. Västkusten - Smögen"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Kategori</ion-label>
-    <ion-input [(ngModel)]="data.Category" placeholder="Kategori"></ion-input>
-  </ion-item>
+<ion-content class="background"> <!--Valideringen och felmeddelanden kommer från en guide: https://hafizmokhtar.com/tutorials/ionic-4-form-validation-with-reactive-forms-tutorial/-->
+  <div class="ion-padding" style="background-color: white; border: black; border-radius: 5%; margin-top: 80px; opacity: 0.9;">
+    <form [formGroup]="registrationForm" (ngSubmit)="submitForm()">
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Evenemangets namn</ion-label>
+          <ion-input  [(ngModel)]="data.EventName" autocapitalize inputmode="text" formControlName="EventName"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.EventName">
+          <ng-container *ngIf="EventName.hasError(error.type) && (EventName.dirty || EventName.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
 
+        <ion-item>
+          <ion-label position="floating">Kort beskrivning</ion-label>
+          <ion-input  [(ngModel)]="data.Description" autocapitalize inputmode="text" formControlName="Description"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.Description">
+          <ng-container *ngIf="Description.hasError(error.type) && (Description.dirty || Description.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+        <ion-item>
+          <ion-label>Kategori</ion-label>
+          <ion-select multiple="false" (ionChange)="selectHandler($event)" cancelText="Avbryt" okText="Välj!">
+            <ion-select-option value="Lekar i lag">Laglekar</ion-select-option>
+            <ion-select-option value="Quiz">Quiz</ion-select-option>
+            <ion-select-option value="Frågesport">Singellekar</ion-select-option>
+    
+          </ion-select>
+          <!-- <ion-label position="floating">Kategori</ion-label>
+          <ion-input  [(ngModel)]="data.Category" autocapitalize inputmode="text" formControlName="Category"></ion-input> -->
+        </ion-item>
+        
+        <ion-item>
+          <ion-label >Datum</ion-label>
+          <ion-input aria-placeholder="Datum" [(ngModel)]="data.Date" autocapitalize type="Date" formControlName="Date"></ion-input>
+        </ion-item>
+        
+        <div *ngFor="let error of errorMessages.Date">
+          <ng-container *ngIf="Date.hasError(error.type) && (Date.dirty || Date.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+        <ion-item>
+          <ion-label position="floating">Plats för evenemang</ion-label>
+          <ion-input  [(ngModel)]="data.Location" autocapitalize inputmode="text" formControlName="Location"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.Location">
+          <ng-container *ngIf="Location.hasError(error.type) && (Location.dirty || Location.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+      
+      </ion-list>
+      <br>
+      <ion-button (click)="showToast()" [disabled]="!registrationForm.valid" type="submit" expand="block">Skapa evenemang <ion-icon slot="end"
+          name="create">
+        </ion-icon>
+      </ion-button>
+    </form>
+  </div>
+</ion-content>
+</ion-content>
+<ion-content *ngIf="!authenticated">
+    <h2>Du är ej inloggad. Logga in för att få åtkomst till din information</h2>
 
-  <ion-item>
-    <ion-button (click)="submitForm()">Add
-    </ion-button>
-  </ion-item>
-
-</ion-content> 
+  <ion-button margin-top (click)="signIn()" *ngIf="!authenticated">Login</ion-button>
+</ion-content>

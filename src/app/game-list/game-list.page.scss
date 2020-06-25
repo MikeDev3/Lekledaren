@@ -1,0 +1,55 @@
+ion-content.background{
+    --background: url(../../assets/purple.jpg) 0 0/100% 100% no-repeat;
+  }
+  .pointsButton{
+    background-color: orange;
+    height: 30px;
+    border-radius: 10%;
+    opacity: 0.9;
+    -webkit-box-shadow: -1px -1px 19px 9px rgba(0,0,0,0.32);
+    -moz-box-shadow: -1px -1px 19px 9px rgba(0,0,0,0.32);
+    box-shadow: -1px -1px 19px 9px rgba(0,0,0,0.32);
+    border-radius: 10%;
+  }
+.button1{
+    background-color: orange;
+    height: 40px;
+    border-radius: 10%;
+    opacity: 0.9;
+    -webkit-box-shadow: -1px -1px 19px 9px rgba(0,0,0,0.32);
+    -moz-box-shadow: -1px -1px 19px 9px rgba(0,0,0,0.32);
+    box-shadow: -1px -1px 19px 9px rgba(0,0,0,0.32);
+    border-radius: 10%;
+}
+.button2{
+    background-color: green;
+    height: 40px;
+    border-radius: 10%;
+    opacity: 0.9;
+    -webkit-box-shadow: -1px -1px 19px 9px rgba(0,0,0,0.32);
+    -moz-box-shadow: -1px -1px 19px 9px rgba(0,0,0,0.32);
+    box-shadow: -1px -1px 19px 9px rgba(0,0,0,0.32);
+    border-radius: 10%;
+}
+.button3{
+    background-color: red;
+    height: 40px;
+    border-radius: 10%;
+    opacity: 0.9;
+    -webkit-box-shadow: -1px -1px 19px 9px rgba(0,0,0,0.32);
+    -moz-box-shadow: -1px -1px 19px 9px rgba(0,0,0,0.32);
+    box-shadow: -1px -1px 19px 9px rgba(0,0,0,0.32);
+    border-radius: 10%;
+}
+
+.createBtn{
+  
+    font-size: medium;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    opacity: 0.8;
+    --border-radius: 50%;
+}
+.createBtn:hover{
+    opacity: 1;
+
+}

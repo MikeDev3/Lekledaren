@@ -1,9 +1,102 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>event-detail</ion-title>
+  <ion-toolbar  color="tertiary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+      <ion-label padding>
+
+      <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;  ">
+        {{data.EventName}} 
+        
+        <img class="toolbarImg" src="/assets/clipart.png" alt=""/>
+      </h1> 
+    
+
+
+      </ion-label>
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding class="background">
+  <ion-row class="ion-justify-content-center">
 
+  <h1 style="text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-top: 10px ;"> {{data.EventName}}  </h1>
+    <div class="item"> <!--Brace design from source https://gist.github.com/krschmidt/f788d817b091fda51c3a-->
+      <div class="borders"></div>
+  </div>
+  <img height="300" style="padding: 20px;" src="/assets/pngwave.png" alt=""/>
+  </ion-row>
+
+  <ion-row>
+    <ion-col col-4>
+      <ion-card routerLink='/scoreboard/{{data.ID}}' class="CardOne">
+        <ion-card-header>
+          <ion-card-subtitle>Resultat</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content style="position: absolute; bottom: 0px; right: 0px;">
+          
+          <img slot="end" src="/assets/icon/leaderboard96.png" style="height: 45px; width: 45px;" />
+        </ion-card-content>
+        <!-- <ion-card-content style="position: fixed; bottom: 0px; right: 0px;">
+          
+          <img slot="end" src="/assets/calender.png" style="height: 40px; width: 40px;" />
+        </ion-card-content> --> <!-- Lite kul kod eftersom bilden blir som en actionbar-->
+      </ion-card>
+    </ion-col>
+    <ion-col col-4>
+      <ion-card  routerLink='/event-teams/{{data.ID}}' class="CardTwo">
+        <ion-card-header>
+          <ion-card-subtitle>Lag</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content style="position: absolute; bottom: 0px; right: 0px;">
+          
+          <img slot="end" src="/assets/icon/jump.png" style="height: 45px; width: 45px;" />
+        </ion-card-content>
+      </ion-card>   
+     </ion-col>  
+  </ion-row>
+
+  <ion-row>
+    <ion-col col-4>
+      <ion-card routerLink='/game-list/{{data.ID}}' class="CardThree"> 
+        <ion-card-header>
+          <ion-card-subtitle>Lekar</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content style="position: absolute; bottom: 0px; right: 0px;">
+          
+          <img slot="end" src="/assets/icon/calender.png" style="height: 45px; width: 45px;" />
+        </ion-card-content>
+    
+      </ion-card>
+    </ion-col>
+    <ion-col col-4>
+      <ion-card  class="CardFour">
+        <ion-card-header>
+          <ion-card-subtitle>Chatt</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content style="position: absolute; bottom: 0px; right: 0px;">
+          
+          <img slot="end" src="/assets/icon/communication96.png" style="height: 45px; width: 45px;" />
+        </ion-card-content>
+      </ion-card>   
+     </ion-col>  
+  </ion-row>
+
+
+  <ion-list style="opacity: 0.9; border-radius: 10%;" lines="none">
+    <ion-list-header>
+      <ion-label>Information</ion-label>
+    </ion-list-header>
+    <ion-item  [routerLink]="[ '/about']">
+      <ion-icon slot="start" color="tertiary" name="book"></ion-icon>
+      <ion-label>Varför denna app?</ion-label>
+    </ion-item>
+    <ion-item  [routerLink]="[ '/about']">
+      <ion-icon slot="start" color="tertiary" name="build"></ion-icon>
+      <ion-label>Om oss</ion-label>
+    </ion-item>
+    
+  </ion-list>
 </ion-content>

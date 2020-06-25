@@ -1,0 +1,22 @@
+
+<ion-content padding class="background"> <!-- Login och tutorial kommer ifrån Okta och deras utvecklare: https://developer.okta.com/blog/2019/06/20/ionic-4-tutorial-user-authentication-and-registration     -->
+        
+  <ion-row class="ion-justify-content-center">
+    <h1 style="text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-top: 50px ;">Lekledaren</h1>
+    <div class="item"> <!--Brace design from source https://gist.github.com/krschmidt/f788d817b091fda51c3a-->
+      <div class="borders"></div>
+  </div>
+            <img height="300" style="padding: 20px;" src="/assets/clipart.png" alt=""/>
+
+  <ion-col align-self-center size-md="6" size-lg="5" size-xs="12" >    
+      <h2 style="text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 50px;">Inloggning</h2>
+      <ion-button (click)="signIn()" type="submit" expand="block">Logga in <ion-icon slot="end"
+        name="checkmark">
+      </ion-icon>
+    </ion-button>
+    
+  </ion-col >
+</ion-row>
+
+
+</ion-content>

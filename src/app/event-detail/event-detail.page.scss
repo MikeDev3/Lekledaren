@@ -1,0 +1,67 @@
+.welcome-card img {
+    max-height: 35vh;
+    overflow: hidden;
+    opacity: 0.9; 
+    border-radius: 10%;
+  }
+  
+  .toolbarImg {
+    max-height: 10vh;
+    max-width: 10vh;
+    float: right;
+    padding-right: 30px;
+  }
+  ion-content.background{
+    --background: url(../../assets/ombre.jpg ) 0 0/100% 100% no-repeat;
+  }
+  ion-card-subtitle{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:white;
+    font-style: italic;
+    font-size: 15px;
+  }
+  .CardOne{
+    --background: url(../../assets/water.jpg) 0 0/100% 100% no-repeat;
+    height: 100px;
+    border-radius: 10%;
+    opacity: 0.9;
+  
+  }
+  .CardTwo{
+    --background: url(../../assets/grass.jpg) 0 0/100% 100% no-repeat;
+    height: 100px;
+    border-radius: 10%;
+    opacity: 0.9;
+  
+  }
+  .CardThree{
+    --background: #7e57ff;;
+    height: 100px;
+    border-radius: 10%;
+    opacity: 0.9;
+  
+  }
+  .CardFour{
+    --background: url(../../assets/firecolor.jpg) 0 0/100% 100% no-repeat;
+    height: 100px;
+    border-radius: 10%;
+    opacity: 0.9;
+  
+  }
+
+  .item {
+    width: 300px;
+    padding-bottom: 50px;
+}
+.top {
+    margin-bottom: -8px;
+    text-align: center;
+}
+.borders {
+    border-bottom: black solid 4px;
+    border-left: black solid 4px;
+    border-right: black solid 4px;
+    height: 12px;
+    border-bottom-right-radius:8px;
+    border-bottom-left-radius:8px;
+}

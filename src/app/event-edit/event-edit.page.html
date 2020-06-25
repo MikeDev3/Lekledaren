@@ -1,9 +1,43 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>event-edit</ion-title>
+  <ion-toolbar  color="tertiary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+      <ion-label padding>
+      <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;  ">
+        Uppdatera evenemang        
+      </h1> 
+      </ion-label>
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding class="background">
 
+  <ion-item>
+    <ion-label>Namn</ion-label>
+    <ion-input [(ngModel)]="data.EventName" placeholder="Namn"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Datum</ion-label>
+    <ion-input [(ngModel)]="data.Date" placeholder="Datum"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Beskrivning</ion-label>
+    <ion-input [(ngModel)]="data.Description" placeholder="Beskrivning"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Plats</ion-label>
+    <ion-input [(ngModel)]="data.Location" placeholder="Plats"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Kategori</ion-label>
+    <ion-input [(ngModel)]="data.Category" placeholder="Kategori"></ion-input>
+  </ion-item>
+  <ion-button (click)="updateEvent()" color="success" size="small">
+    Uppdatera info
+  </ion-button>
+  <ion-button [routerLink]="[ '/event-list']" color="danger" size="small">
+    Avbryt
+  </ion-button>
 </ion-content>

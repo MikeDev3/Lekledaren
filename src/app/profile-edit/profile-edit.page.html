@@ -1,0 +1,84 @@
+<ng-container *ngIf="data">
+<ion-header translucent no-border>
+  <ion-toolbar>
+    <ion-buttons icon="arrow-back" slot="start">
+      <ion-back-button ></ion-back-button>
+      </ion-buttons>
+    <ion-title>
+     Uppdatera profil
+    </ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content fullscreen="true" slot="fixed" >
+ 
+
+  <div class="ion-padding">
+    <div class="card">
+      <div class="header">
+        <div class="avatar">
+          <img src="http://www.kjosbigmouth.com/wp-content/uploads/2019/09/best-free-staff-man-profile-person-icon-circle-photos.jpg" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <ion-item>
+        <ion-label>Förnamn</ion-label>
+        <ion-input [(ngModel)]="data.Firstname" placeholder="Förnamn"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Efternamn</ion-label>
+        <ion-input [(ngModel)]="data.Lastname" placeholder="Efternamn"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Ålder</ion-label>
+        <ion-input [(ngModel)]="data.Age" placeholder="Ålder"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>E-postadress</ion-label>
+        <ion-input [(ngModel)]="data.Email" placeholder="E-postadress"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Telefonnummer</ion-label>
+        <ion-input [(ngModel)]="data.Phonenumber" placeholder="Telefonnummer"></ion-input>
+      </ion-item>
+
+      <ion-row style="padding: 50px" class="ion-justify-content-center">
+        <ion-button  (click)="updateProfile()" color="success" size="small">
+          Uppdatera info
+        </ion-button>
+        <ion-button routerLink= '/profile' color="danger" size="small">
+          Avbryt
+        </ion-button>
+
+        </ion-row>
+      </div>
+   
+  </div>
+</ion-content>
+</ng-container>
+
+
+<ion-content *ngIf="!authenticated">
+
+  <ion-header>
+    <ion-toolbar  color="tertiary">
+     
+        <ion-label padding class="user-meta ion-text-center">
+  
+        <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 35px; ">
+          Profil          
+        </h1> 
+        </ion-label>
+  
+    </ion-toolbar>
+    <h2>Du är ej inloggad. Logga in för att få åtkomst till din information</h2>
+  </ion-header>
+
+  <ion-button margin-top (click)="signIn()" *ngIf="!authenticated">Login</ion-button>
+
+
+</ion-content>

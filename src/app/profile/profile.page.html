@@ -1,0 +1,76 @@
+<ion-header translucent no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button style="color:white"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>&nbsp;
+      <ng-container *ngIf="data">
+        Välkommen {{ data.Firstname }}   
+       </ng-container>
+    </ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ng-container *ngIf="data">
+
+<ion-content fullscreen="true" slot="fixed" >
+  <ion-fab  vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger">
+      <ion-icon name="settings"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="bottom">
+      <ion-fab-button routerLink='/profile-edit/{{data.ID}}'  style="height: 60px; width: 60px; opacity: 0.9;"><ion-icon name="construct"></ion-icon> Ändra</ion-fab-button>
+      <ion-fab-button  style="height: 60px; width: 60px; opacity: 0.9;"><ion-icon name="trash"></ion-icon> Radera</ion-fab-button>
+      <!--Radera knappen är ej i bruk då jag behöver modifiera delete-koden i API:et så att alla tillhörande evenemang jag skapat försvinner och även så att jag ej är deltagare i ett lag längre-->
+    </ion-fab-list>
+  </ion-fab>
+
+  <div class="ion-padding">
+    <div class="card">
+      <div class="header">
+        <div class="avatar">
+          <img src="http://www.kjosbigmouth.com/wp-content/uploads/2019/09/best-free-staff-man-profile-person-icon-circle-photos.jpg" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="user-meta ion-text-center">
+        <h3 class="profilename"> {{ data.Firstname }} {{data.Lastname}} </h3>
+        <h5 class="country">Ålder: {{data.Age}}</h5>
+        <h6 class="ranking">Aktiva evenemang: <ion-chip>
+          <ion-label>2</ion-label>
+          </ion-chip>
+        </h6>
+      </div>
+      <ion-label><strong>Epost:</strong> {{data.Email}}</ion-label>
+      <ion-label><strong>Telefonnummer:</strong> {{data.Phonenumber}}</ion-label>
+
+      <br> <br>
+      <ion-button [routerLink]="[ '/event-list']" shape="round" expand="full" color="primary">Mina evenemang</ion-button>
+      
+    </div>
+   
+  </div>
+</ion-content>
+</ng-container>
+<ion-content *ngIf="!authenticated">
+
+  <ion-header>
+    <ion-toolbar  color="tertiary">
+     
+        <ion-label padding class="user-meta ion-text-center">
+  
+        <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 35px; ">
+          Profil          
+        </h1> 
+        </ion-label>
+  
+    </ion-toolbar>
+    <h2>Du är ej inloggad. Logga in för att få åtkomst till din information</h2>
+  </ion-header>
+
+  <ion-button margin-top (click)="signIn()" *ngIf="!authenticated">Login</ion-button>
+
+
+</ion-content>

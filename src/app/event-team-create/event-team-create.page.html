@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar  color="tertiary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+      <ion-label padding>
+
+      <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;  ">
+      Lägg till lag        
+      </h1> 
+
+      </ion-label>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <form [formGroup]="registrationForm" (ngSubmit)="submitForm()">
+      <ion-list>
+
+        <ion-item>
+          <ion-label position="floating">Lagets namn</ion-label>
+          <ion-input  [(ngModel)]="data.TeamName" autocapitalize inputmode="text" formControlName="TeamName"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.TeamName">
+          <ng-container *ngIf="TeamName.hasError(error.type) && (TeamName.dirty || TeamName.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+
+        <!-- <ion-item>
+          <ion-label>Ge laget en profilbild</ion-label>
+          <ion-select multiple="false" (ionChange)="selectHandler($event)" cancelText="Avbryt" okText="Välj!">
+            <ion-select-option value="https://mccoyderek.files.wordpress.com/2016/07/team.jpg"><img src="https://mccoyderek.files.wordpress.com/2016/07/team.jpg" /></ion-select-option>
+            <ion-select-option value="https://teamsdemo.office.com/img/closing-image.png">Parlek</ion-select-option>
+            <ion-select-option value="https://freepngimg.com/download/team/11-2-team-picture.png">Laglekar</ion-select-option>
+           <ion-select-option value="https://scalors.com/wp-content/uploads/2017/03/red_body.jpg">Laglekar</ion-select-option>
+    
+          </ion-select>
+         
+        </ion-item>  Detta funkar inte ännu -->
+
+      </ion-list>
+      <br>
+      <ion-button (click)="showToast()" [disabled]="!registrationForm.valid" type="submit" expand="block">Lägg till lag <ion-icon slot="end"
+          name="create">
+        </ion-icon>
+      </ion-button>
+    </form>
+  </div>
+</ion-content>
