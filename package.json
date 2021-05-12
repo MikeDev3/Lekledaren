@@ -30,7 +30,7 @@
         "@okta/okta-auth-js": "^2.11.2",
         "@oktadev/schematics": "^1.1.4",
         "angular-oauth2-oidc": "^8.0.4",
-        "chart.js": "^2.9.3",
+        "chart.js": "^2.9.4",
         "core-js": "^2.5.4",
         "ionic-appauth": "0.4.4",
         "rxjs": "~6.5.1",
